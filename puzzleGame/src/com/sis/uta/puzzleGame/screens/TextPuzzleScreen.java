@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -24,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sis.uta.puzzleGame.puzzleGame;
-import com.sis.uta.puzzleGame.controller.SectionSelectController;
+
 
 
 
@@ -44,11 +43,13 @@ public class TextPuzzleScreen implements Screen{
 	private Table table;
 	private TextButton buttonBack;
 	private BitmapFont white, black;
-	private Label heading,answer1,answer2,answer3,rightanswer;
+	private Label heading,answer1,answer2,answer3,answer4,rightanswer;
 	static int i = 0;
 	
 	
 	List<TextPuzzle> list = null;
+	
+	
 
 	@Override
 	public void render(float delta) {
@@ -120,27 +121,44 @@ public class TextPuzzleScreen implements Screen{
 		heading.setWrap(true);
 		heading.setColor(Color.WHITE);
 		heading.setWidth(0);
+	
 		
-		
-
 		TextButton button1 = new TextButton("A", textButtonStyle);
 		button1.left();
 		button1.addListener(new ClickListener(){
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer1().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 				
@@ -151,18 +169,36 @@ public class TextPuzzleScreen implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer2().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 		
@@ -173,18 +209,36 @@ public class TextPuzzleScreen implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer3().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 		
@@ -194,31 +248,45 @@ public class TextPuzzleScreen implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
-				if(i<list.size()-1){
-					i++;
-					}
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH YES", skinD);
-				dialog.text("Excellent");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer4().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
-	
 		
-		answer1 = new Label(list.get(i).getAnsewer1(), headingStyle);
-		answer2 = new Label(list.get(i).getAnsewer2(), headingStyle);
-		answer3 = new Label(list.get(i).getAnsewer3(), headingStyle);
-		rightanswer = new Label(list.get(i).getRightanswer(), headingStyle);
-		
+		answer1 = new Label(list.get(i).getAnswer1(), headingStyle);
+		answer2 = new Label(list.get(i).getAnswer2(), headingStyle);
+		answer3 = new Label(list.get(i).getAnswer3(), headingStyle);
+		answer4 = new Label(list.get(i).getAnswer4(), headingStyle);
+
 				
 		table.row().minWidth(Gdx.graphics.getWidth()).colspan(2);
 		table.add(heading).colspan(5);		
@@ -233,7 +301,7 @@ public class TextPuzzleScreen implements Screen{
 		table.add(answer3);
 		table.row().minWidth(Gdx.graphics.getWidth()/6).minHeight(Gdx.graphics.getHeight()/24);
 		table.add(button4);
-		table.add(rightanswer);
+		table.add(answer4);
 		table.add(buttonBack);
 		
 		stage.addActor(table);
@@ -252,7 +320,7 @@ public class TextPuzzleScreen implements Screen{
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-try {
+	try {
 			
 			list = new ReadXMLFile().getTextPuzzlesByParseXml();
 		} catch (Exception e) {
@@ -302,27 +370,44 @@ try {
 		heading.setWrap(true);
 		heading.setColor(Color.WHITE);
 		heading.setWidth(0);
+	
 		
-		
-
 		TextButton button1 = new TextButton("A", textButtonStyle);
 		button1.left();
 		button1.addListener(new ClickListener(){
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer1().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 				
@@ -333,18 +418,36 @@ try {
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer2().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 		
@@ -355,18 +458,36 @@ try {
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH NO", skinD);
-				dialog.text("sorry!");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer3().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
 		
@@ -376,31 +497,45 @@ try {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				//add checking
-				if(i<list.size()-1){
-					i++;
-					}
 				Skin skinD = new Skin(Gdx.files.internal("data/uiskin.json"));
-				Dialog dialog = new Dialog("OH YES", skinD);
-				dialog.text("Excellent");
-				dialog.button(" OK ").addListener(new ClickListener(){
+				if(list.get(i).getAnswer4().equals(list.get(i).getRightanswer()))
+				{				
+					if(i<list.size()-1){i++;}
+					Dialog dialog = new Dialog("OH YES", skinD);
+					dialog.text("Excellent");
+					dialog.button(" OK ").addListener(new ClickListener(){
 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						// TODO Auto-generated method stub
-						((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
-					}
-					
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new TextPuzzleScreen(game));
+						}
+						
+					});
+					dialog.show(stage);
+				}
+				else
+				{
+					Dialog dialog = new Dialog("OH NO", skinD);
+					dialog.text("sorry!");
+					dialog.button(" OK ").addListener(new ClickListener(){
+
+						@Override
+						public void clicked(InputEvent event, float x, float y) {
+							// TODO Auto-generated method stub
+							((Game)Gdx.app.getApplicationListener()).setScreen(new FirstSection(game));
+						}
 				});
 				dialog.show(stage);
+				}
 			}
 		});  
-	
 		
-		answer1 = new Label(list.get(i).getAnsewer1(), headingStyle);
-		answer2 = new Label(list.get(i).getAnsewer2(), headingStyle);
-		answer3 = new Label(list.get(i).getAnsewer3(), headingStyle);
-		rightanswer = new Label(list.get(i).getRightanswer(), headingStyle);
-		
+		answer1 = new Label(list.get(i).getAnswer1(), headingStyle);
+		answer2 = new Label(list.get(i).getAnswer2(), headingStyle);
+		answer3 = new Label(list.get(i).getAnswer3(), headingStyle);
+		answer4 = new Label(list.get(i).getAnswer4(), headingStyle);
+
 				
 		table.row().minWidth(Gdx.graphics.getWidth()).colspan(2);
 		table.add(heading).colspan(5);		
@@ -415,7 +550,7 @@ try {
 		table.add(answer3);
 		table.row().minWidth(Gdx.graphics.getWidth()/6).minHeight(Gdx.graphics.getHeight()/24);
 		table.add(button4);
-		table.add(rightanswer);
+		table.add(answer4);
 		table.add(buttonBack);
 		
 		stage.addActor(table);
@@ -426,5 +561,4 @@ try {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
