@@ -281,12 +281,12 @@ public class TextPuzzleScreen implements Screen{
 				}
 			}
 		});  
-		
+		answer4 = new Label(list.get(i).getAnswer4(), headingStyle);
+
 		answer1 = new Label(list.get(i).getAnswer1(), headingStyle);
 		answer2 = new Label(list.get(i).getAnswer2(), headingStyle);
 		answer3 = new Label(list.get(i).getAnswer3(), headingStyle);
-		answer4 = new Label(list.get(i).getAnswer4(), headingStyle);
-
+		
 				
 		table.row().minWidth(Gdx.graphics.getWidth()).colspan(2);
 		table.add(heading).colspan(5);		
