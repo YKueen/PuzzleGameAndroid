@@ -5,10 +5,10 @@ public class TextPuzzle {
 	private String question;
 	private String answer1;
 	private String answer2;
-
-	private String rightanswer;
 	private String answer3;
 	private String answer4;
+	private String rightanswer;
+	
 	public TextPuzzle(int id,String question,String answer1,
 			String answer2,String answer3,String answer4,String rightanswer){
 		super();

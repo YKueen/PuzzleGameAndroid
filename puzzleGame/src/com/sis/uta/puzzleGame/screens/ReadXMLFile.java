@@ -26,9 +26,8 @@ public class ReadXMLFile {
 		 tp.setQuestion(textpuzzle.get("question"));
 		 tp.setAnswer1(textpuzzle.get("answer1"));
 		 tp.setAnswer2(textpuzzle.get("answer2"));
-		
-		 tp.setAnswer4(textpuzzle.get("answer4"));
 		 tp.setAnswer3(textpuzzle.get("answer3"));
+		 tp.setAnswer4(textpuzzle.get("answer4"));
 		 tp.setRightanswer(textpuzzle.get("rightanswer"));
 		 list.add(tp);
 		 }
